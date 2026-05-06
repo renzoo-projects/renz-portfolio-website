@@ -18,11 +18,11 @@ export function CursorFollower() {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed z-[1] hidden h-[100rem] w-[100rem] rounded-full opacity-85 mix-blend-screen blur-2xl md:block"
+      className="pointer-events-none fixed z-[1] hidden h-[50rem] w-[50rem] rounded-full opacity-85 mix-blend-screen blur-2xl md:block"
       style={{
         background:
-          "radial-gradient(circle, rgba(96,165,250,0.2) 0%, rgba(59,130,246,0.14) 28%, rgba(37,99,235,0.09) 50%, rgba(30,64,175,0.045) 70%, transparent 90%)",
-        left: mousePosition.x,
+          "radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(37,99,235,0.15) 40%, rgba(15,23,42,0.05) 70%, transparent 90%)",
+        left: mousePosition.x, 
         top: mousePosition.y,
         translateX: "-50%",
         translateY: "-50%",

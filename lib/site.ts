@@ -1,10 +1,10 @@
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://renz-portfolio-website.vercel.app";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://renzdearroz.vercel.app";
 
 export const site = {
   name: "Renz Rendel De Arroz",
-  title: "Renz Rendel De Arroz | Full-stack Developer",
+  title: "Renz Rendel De Arroz",
   description:
-    "Portfolio of Renz Rendel De Arroz, a Computer Science student building practical full-stack systems with React, Node.js, Firebase, SQL, and Next.js.",
+    "Renz Rendel De Arroz is a Computer Science student who builds innovative full-stack systems and digital tools focused on solving real-world problems.",
   url: siteUrl,
   keywords: [
     "Renz Rendel De Arroz",
@@ -15,5 +15,9 @@ export const site = {
     "Node.js developer",
     "Firebase developer",
     "portfolio",
+    "software engineer",
+    "web developer",
+    "frontend developer",
+    "backend developer",
   ],
 };

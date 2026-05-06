@@ -1,150 +1,129 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import Link from "next/link";
+import { Github, Linkedin, Facebook, Instagram } from "lucide-react";
 import { motion } from "motion/react";
 
 const navItems = [
   { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
   { label: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
-  const navRef = useRef<HTMLElement>(null);
   const [activeSection, setActiveSection] = useState("about");
-  const containerVariants = {
+
+  const containerVariants = useMemo(() => ({
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.12,
+        staggerChildren: 0.1,
         delayChildren: 0.05,
       },
     },
-  };
+  }), []);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
+  const itemVariants = useMemo(() => ({
+    hidden: { opacity: 0, y: 12 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
     },
-  };
+  }), []);
 
   useEffect(() => {
     const content = document.getElementById("content");
-    const nav = navRef.current;
 
     const handleScroll = () => {
-      const sections = navItems.map((item) => item.id);
+      for (const item of navItems) {
+        const el = document.getElementById(item.id);
+        if (!el) continue;
 
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= window.innerHeight * 0.35 && rect.bottom > window.innerHeight * 0.35) {
-            setActiveSection(section);
-            break;
-          }
+        const rect = el.getBoundingClientRect();
+
+        if (
+          rect.top <= window.innerHeight * 0.35 &&
+          rect.bottom > window.innerHeight * 0.35
+        ) {
+          setActiveSection(item.id);
+          break;
         }
       }
     };
 
-    const handleWheel = (event: WheelEvent) => {
-      if (!content || window.innerWidth < 1024) {
-        return;
-      }
-
-      event.preventDefault();
-      content.scrollTop += event.deltaY;
-    };
-
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
     content?.addEventListener("scroll", handleScroll);
-    nav?.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       content?.removeEventListener("scroll", handleScroll);
-      nav?.removeEventListener("wheel", handleWheel);
     };
   }, []);
 
   return (
-    <nav
-      ref={navRef}
-      className="relative flex h-screen touch-none items-center justify-center overscroll-none px-6 py-8 md:px-10 lg:sticky lg:top-0 lg:px-12 lg:py-12"
-    >
+    <nav className="sticky top-0 h-screen flex items-center px-10 lg:px-16">
       <motion.div
-        className="w-full max-w-lg -translate-y-12 text-left lg:translate-y-[var(--intro-offset)]"
+        className="w-full max-w-sm"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
+
+        {/* NAME */}
         <motion.div variants={itemVariants}>
-          <Link href="/" className="block">
-            <h1 className="max-w-2xl text-3xl font-semibold leading-tight tracking-normal text-white transition-colors hover:text-sky-300 md:text-5xl">
-              Renz Rendel<br />De Arroz
+          <Link href="/">
+            <h1 className="text-6xl font-semibold leading-tight text-white hover:text-sky-300 transition-colors">
+              Renz Rendel <br /> De Arroz
             </h1>
           </Link>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
-            Computer Science student building practical, user-centered systems across frontend and backend.
+
+          <p className="mt-5 text-slate-300 leading-7 text-sm md:text-base">
+            I build reliable systems and intuitive interfaces that solve real problems.
           </p>
         </motion.div>
 
-        <motion.div className="mt-12" variants={itemVariants}>
-          <div className="mb-6 flex flex-wrap gap-3 lg:flex-col">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => {
-                  setActiveSection(item.id);
-                  document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
-                }}
-                variants={itemVariants}
-                className={`group flex w-fit items-center gap-3 text-left text-sm uppercase tracking-[0.22em] transition-colors hover:text-sky-300 ${
-                  activeSection === item.id ? "text-sky-300" : "text-slate-400"
+        {/* NAV */}
+        <motion.div className="mt-14 space-y-4" variants={itemVariants}>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() =>
+                document.getElementById(item.id)?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className={`group flex items-center gap-3 text-sm uppercase tracking-[0.2em] transition-colors ${
+                activeSection === item.id
+                  ? "text-sky-300"
+                  : "text-slate-400"
+              }`}
+            >
+              <span
+                className={`h-px transition-all ${
+                  activeSection === item.id
+                    ? "w-10 bg-sky-300"
+                    : "w-6 bg-slate-700 group-hover:w-10 group-hover:bg-sky-300"
                 }`}
-              >
-                <span
-                  className={`h-px transition-all ${
-                  activeSection === item.id ? "w-10 bg-sky-300" : "w-6 bg-slate-700 group-hover:w-10 group-hover:bg-sky-300"
-                  }`}
-                />
-                {item.label}
-              </motion.button>
-            ))}
-          </div>
+              />
+              {item.label}
+            </button>
+          ))}
+        </motion.div>
 
-          <div className="flex gap-4 text-sm text-slate-400">
-            <motion.a
-              href="mailto:renz@example.com"
-              className="transition-colors hover:text-white"
-              variants={itemVariants}
-            >
-              Email
-            </motion.a>
-            <motion.a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-white"
-              variants={itemVariants}
-            >
-              GitHub
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-white"
-              variants={itemVariants}
-            >
-              LinkedIn
-            </motion.a>
-          </div>
+        {/* SOCIALS */}
+        <motion.div
+          className="mt-16 flex gap-4 text-slate-400"
+          variants={itemVariants}
+        >
+          <Github size={18} />
+          <Linkedin size={18} />
+          <Facebook size={18} />
+          <Instagram size={18} />
         </motion.div>
       </motion.div>
     </nav>

@@ -22,13 +22,10 @@ export function FeaturedWorkSection() {
 
         <Link
           href="/projects"
-          className="group flex h-28 w-full flex-col items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10 p-6 transition-all hover:border-sky-300/50 hover:bg-sky-400/15"
+          className="group inline-flex items-center gap-3 text-sky-400 transition-all hover:text-sky-300"
         >
-          <h3 className="mb-2 text-center text-lg font-medium tracking-normal">View All Projects</h3>
-          <div className="flex items-center gap-2 text-sm tracking-[0.18em] text-slate-300 transition-all duration-300 group-hover:gap-3">
-            SEE MORE
-            <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-          </div>
+          <span className="text-sm tracking-[0.24em] text-sky-300/80 transition-transform group-hover:translate-x-1">VIEW MORE PROJECTS</span>
+          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </section>

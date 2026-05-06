@@ -1,5 +1,5 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { CursorFollower } from "@/components/CursorFollower";
@@ -14,47 +14,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: site.name,
-    url: site.url,
-    jobTitle: "Full-stack Developer",
-    description: site.description,
-    knowsAbout: ["React", "Next.js", "Node.js", "Firebase", "SQL", "Full-stack development"],
-    mainEntityOfPage: site.url,
-    hasPart: projects.map((project) => ({
-      "@type": "CreativeWork",
-      name: project.title,
-      description: project.description,
-      url: `${site.url}/projects#${project.slug}`,
-      dateCreated: project.year,
-      keywords: project.tags.join(", "),
-    })),
-  };
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  jobTitle: "Full-stack Developer",
+  description: site.description,
+  knowsAbout: ["React", "Next.js", "Node.js", "Firebase", "SQL"],
+  mainEntityOfPage: site.url,
+  hasPart: projects.map((project) => ({
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    url: `${site.url}/projects#${project.slug}`,
+    dateCreated: project.year,
+    keywords: project.tags.join(", "),
+  })),
+};
 
+export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
-      <script
+    <div className="relative min-h-screen bg-[#0f172a] text-white">
+      {/* SEO */}
+      <Script
+        id="structured-data"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
       />
+
       <CursorFollower />
-      <div
-        className="relative z-10 lg:grid lg:h-screen lg:grid-cols-2 lg:overflow-hidden lg:overscroll-none lg:px-10 xl:px-16"
-        style={
-          {
-            ["--intro-offset" as string]: "-8rem",
-            ["--about-intro-offset" as string]: "-7rem",
-          } as CSSProperties
-        }
-      >
-        <Navbar />
-        <main
-          id="content"
-          className="min-h-screen lg:h-screen lg:overflow-y-auto lg:overscroll-contain"
-        >
+
+      <div className="grid min-h-screen lg:grid-cols-2">
+
+        {/* Left Content  */}
+        <aside className="sticky translate-x-70 -translate-y-25 top-0 h-screen">
+          <Navbar />
+        </aside>
+
+        {/* Right Content  */}
+        <main id="content" className="px-6 -translate-y-25 lg:px-2">
           <AboutSection />
           <FeaturedWorkSection />
           <ContactSection />
