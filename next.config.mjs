@@ -8,9 +8,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizePackageImports: ["framer-motion", "gsap"],
-  },
 };
 
 export default nextConfig;
