@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -40,7 +41,15 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <CursorFollower />
-      <div className="relative z-10 lg:grid lg:h-screen lg:grid-cols-2 lg:overflow-hidden lg:overscroll-none lg:px-10 xl:px-16">
+      <div
+        className="relative z-10 lg:grid lg:h-screen lg:grid-cols-2 lg:overflow-hidden lg:overscroll-none lg:px-10 xl:px-16"
+        style={
+          {
+            ["--intro-offset" as string]: "-8rem",
+            ["--about-intro-offset" as string]: "-7rem",
+          } as CSSProperties
+        }
+      >
         <Navbar />
         <main
           id="content"

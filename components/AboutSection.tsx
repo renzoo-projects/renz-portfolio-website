@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 export function AboutSection() {
   return (
     <section id="about" className="flex min-h-screen items-center px-6 py-20 md:px-10 lg:px-12 lg:py-24">
-      <div className="w-full max-w-3xl -translate-y-12 lg:-translate-y-35">
+      <div className="w-full max-w-3xl -translate-y-12 lg:translate-y-[var(--about-intro-offset)]">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -13,6 +13,7 @@ export function AboutSection() {
           viewport={{ once: true }}
           className="mb-8 max-w-2xl space-y-5 text-base leading-8 text-slate-300 md:text-lg"
         >
+          <p className="mb-4 text-sm tracking-[0.24em] text-sky-300/80">ABOUT</p>
           <p>
             I&apos;m Renz De Arroz, a Computer Science student focused on building practical, user-centered systems and turning ideas into working products. I work across both frontend and backend, using technologies like React, Node.js, Firebase, and SQL to create applications that are not just functional, but intuitive and efficient.
           </p>
