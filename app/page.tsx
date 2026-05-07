@@ -35,7 +35,7 @@ const structuredData = {
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#0f172a] text-white">
+    <div className="relative min-h-screen bg-black text-white">
       {/* SEO */}
       <Script
         id="structured-data"

@@ -8,7 +8,7 @@ import { projects } from "@/lib/projects";
 
 export function ProjectsClientShell() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#0f172a] text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <CursorFollower />
 
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-sm">
