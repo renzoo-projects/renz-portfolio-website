@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { AboutSection } from "@/components/AboutSection";
-import { ContactSection } from "@/components/ContactSection";
 import { CursorFollower } from "@/components/CursorFollower";
+import { ExperienceSection } from "@/components/ExperienceSection";
 import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
 import { Navbar } from "@/components/Navbar";
 import { projects } from "@/lib/projects";
@@ -50,15 +50,15 @@ export default function Home() {
       <div className="grid min-h-screen lg:grid-cols-2">
 
         {/* Left Content  */}
-        <aside className="sticky translate-x-70 -translate-y-25 top-0 h-screen">
+        <aside className="lg:sticky lg:top-0 lg:h-screen lg:translate-x-70 lg:-translate-y-25">
           <Navbar />
         </aside>
 
         {/* Right Content  */}
-        <main id="content" className="px-6 -translate-y-25 lg:px-2">
+        <main id="content" className="max-w-3xl px-10 lg:px-16">
           <AboutSection />
+          <ExperienceSection />
           <FeaturedWorkSection />
-          <ContactSection />
         </main>
       </div>
     </div>

@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Github, Linkedin, Facebook, Instagram } from "lucide-react";
 import { motion } from "motion/react";
+import { site } from "@/lib/site";
 
 const navItems = [
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
-  { label: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
@@ -38,35 +38,41 @@ export function Navbar() {
   }), []);
 
   useEffect(() => {
-    const content = document.getElementById("content");
-
     const handleScroll = () => {
+      const marker = window.innerHeight * 0.35;
+      let nextSection = navItems[0]?.id ?? "about";
+
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (!el) continue;
 
         const rect = el.getBoundingClientRect();
 
-        if (
-          rect.top <= window.innerHeight * 0.35 &&
-          rect.bottom > window.innerHeight * 0.35
-        ) {
-          setActiveSection(item.id);
+        if (rect.top <= marker && rect.bottom > marker) {
+          nextSection = item.id;
           break;
         }
+
+        if (rect.top < marker) {
+          nextSection = item.id;
+        }
       }
+
+      setActiveSection((current) => (current === nextSection ? current : nextSection));
     };
 
     handleScroll();
-    content?.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
 
     return () => {
-      content?.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
   return (
-    <nav className="sticky top-0 h-screen flex items-center px-10 lg:px-16">
+    <nav className="flex items-center px-10 py-12 lg:sticky lg:top-0 lg:h-screen lg:px-16 lg:py-0">
       <motion.div
         className="w-full max-w-sm"
         variants={containerVariants}
@@ -77,7 +83,7 @@ export function Navbar() {
         {/* NAME */}
         <motion.div variants={itemVariants}>
           <Link href="/">
-            <h1 className="text-6xl font-semibold leading-tight text-white hover:text-sky-300 transition-colors">
+            <h1 className="pt-10 text-6xl font-semibold leading-tight text-white transition-colors hover:text-sky-300">
               Renz Rendel <br /> De Arroz
             </h1>
           </Link>
@@ -91,12 +97,14 @@ export function Navbar() {
         <motion.div className="mt-14 space-y-4" variants={itemVariants}>
           {navItems.map((item) => (
             <button
+              type="button"
               key={item.id}
               onClick={() =>
                 document.getElementById(item.id)?.scrollIntoView({
                   behavior: "smooth",
                 })
               }
+              aria-current={activeSection === item.id ? "page" : undefined}
               className={`group flex items-center gap-3 text-sm uppercase tracking-[0.2em] transition-colors ${
                 activeSection === item.id
                   ? "text-sky-300"
@@ -120,10 +128,26 @@ export function Navbar() {
           className="mt-16 flex gap-4 text-slate-400"
           variants={itemVariants}
         >
-          <Github size={18} />
-          <Linkedin size={18} />
-          <Facebook size={18} />
-          <Instagram size={18} />
+          <a href={site.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub profile" className="transition-colors hover:text-white">
+            <Github size={18} />
+          </a>
+          <a href={site.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile" className="transition-colors hover:text-white">
+            <Linkedin size={18} />
+          </a>
+          <a href={site.socials.facebook} target="_blank" rel="noreferrer" aria-label="Facebook profile" className="transition-colors hover:text-white">
+            <Facebook size={18} />
+          </a>
+          <a href={site.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram profile" className="transition-colors hover:text-white">
+            <Instagram size={18} />
+          </a>
+        </motion.div>
+
+        {/* CREDITS */}
+        <motion.div
+          className="mt-16 text-sm text-slate-500"
+          variants={itemVariants}
+        >
+          <p>Design Inspired by <strong>Brittany Chiang</strong></p>
         </motion.div>
       </motion.div>
     </nav>

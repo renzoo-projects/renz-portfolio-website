@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect } from "react";
+import { motion, useMotionValue } from "motion/react";
 
 export function CursorFollower() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
+      mouseX.set(event.clientX);
+      mouseY.set(event.clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
@@ -22,13 +24,11 @@ export function CursorFollower() {
       style={{
         background:
           "radial-gradient(circle, rgba(59,130,246,0.25) 0%, rgba(37,99,235,0.15) 40%, rgba(15,23,42,0.05) 70%, transparent 90%)",
-        left: mousePosition.x, 
-        top: mousePosition.y,
+        x: mouseX,
+        y: mouseY,
         translateX: "-50%",
         translateY: "-50%",
       }}
-      animate={{ x: 0, y: 0 }}
-      transition={{ type: "spring", damping: 30, stiffness: 200 }}
     />
   );
 }

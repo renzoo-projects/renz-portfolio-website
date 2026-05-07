@@ -4,8 +4,8 @@ import { motion } from "motion/react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="flex min-h-screen items-center px-6 py-20 md:px-10 lg:px-12 lg:py-24">
-      <div className="w-full max-w-3xl -translate-y-12 lg:translate-y-[var(--about-intro-offset)]">
+    <section id="about" className="py-8 lg:pt-26">
+      <div className="w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
