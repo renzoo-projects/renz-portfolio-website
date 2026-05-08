@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-8 lg:pt-35">
+    <section id="about" className="py-8 lg:pt-28">
       <div className="w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
