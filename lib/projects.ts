@@ -6,6 +6,7 @@ export type Project = {
   tags: string[];
   featured?: boolean;
   image: string;
+  href?: string;
 };
 
 export const projects: Project[] = [
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     year: "2026",
     tags: ["React", "Node.js", "SQL"],
     featured: true,
+    href: "https://github.com/renz/laundry-management-system",
     image:
       "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=1080",
   },

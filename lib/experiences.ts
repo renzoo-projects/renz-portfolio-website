@@ -13,6 +13,6 @@ export const experiences = [
     organization: "Simcoe Employment",
     description:
       "Built workflow-focused applications across the stack, with an emphasis on practical interfaces, data handling, and maintainable implementation.",
-    techs: ["React", "Node.js", "SQL", "API Integration"],
+    techs: ["WordPress", "HTML", "JavaScript", "CSS"],
   },
 ] as const;

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-8 lg:pt-26">
+    <section id="about" className="py-8 lg:pt-35">
       <div className="w-full max-w-3xl">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
@@ -15,14 +15,15 @@ export function AboutSection() {
         >
           <p className="mb-4 text-sm tracking-[0.24em] text-sky-300/80">ABOUT</p>
           <p>
-            I&apos;m Renz De Arroz, a Computer Science student focused on building practical, user-centered systems and turning ideas into working products. I work across both frontend and backend, using technologies like React, Node.js, Firebase, and SQL to create applications that are not just functional, but intuitive and efficient.
+            I&apos;m Renz Rendel De Arroz, currently a 3rd-year Computer Science student from the University of the Philippines Visayas, interested in building systems that are practical, reliable, and easy to use. I work across both frontend and backend development, using tools like React, Node.js, Firebase, and SQL to turn ideas into working applications.
           </p>
+
           <p>
-            I&apos;ve worked on projects such as a Laundry Management System and PondStat, where I focused on translating real-world needs into clean, usable solutions while collaborating in team environments.
+            I&apos;ve worked on web and mobile applications, where I focused on building systems and features that solve actual user needs while learning how to work within real development workflows and team environments.
           </p>
+
           <p>
-            I&apos;m constantly learning, refining my approach, and pushing myself to understand how things actually work under the hood—not just making them run, but making them reliable and scalable.
-            My goal is to grow into a developer who builds systems that solve real problems and eventually create products that stand on their own.
+            Most of my learning comes from building. I enjoy understanding how systems work behind the scenes — from interfaces and databases to application logic and structure — and continuously improving how I approach development. My goal is to become a developer who creates products that are useful, scalable, and grounded in real problems.
           </p>
         </motion.div>
       </div>

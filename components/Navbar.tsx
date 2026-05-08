@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Github, Linkedin, Facebook, Instagram } from "lucide-react";
+import { Github, Linkedin, Facebook, Instagram, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
 import { site } from "@/lib/site";
 
@@ -91,6 +91,16 @@ export function Navbar() {
           <p className="mt-5 text-slate-300 leading-7 text-sm md:text-base">
             I build reliable systems and intuitive interfaces that solve real problems.
           </p>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-5 inline-flex items-center gap-2 rounded-lg border border-sky-400/50 px-4 py-2 text-sm text-sky-300 transition-all hover:border-sky-400 hover:bg-sky-400/10"
+          >
+            View Resume
+            <ExternalLink size={14} />
+          </a>
         </motion.div>
 
         {/* NAV */}

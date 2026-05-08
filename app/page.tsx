@@ -3,7 +3,7 @@ import Script from "next/script";
 import { AboutSection } from "@/components/AboutSection";
 import { CursorFollower } from "@/components/CursorFollower";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { FeaturedWorkSection } from "@/components/FeaturedWorkSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
 import { Navbar } from "@/components/Navbar";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -58,7 +58,7 @@ export default function Home() {
         <main id="content" className="max-w-3xl px-10 lg:px-16">
           <AboutSection />
           <ExperienceSection />
-          <FeaturedWorkSection />
+          <ProjectsSection />
         </main>
       </div>
     </div>
