@@ -83,7 +83,7 @@ export function Navbar() {
         {/* NAME */}
         <motion.div variants={itemVariants}>
           <Link href="/">
-            <h1 className="pt-10 text-6xl font-semibold leading-tight text-white transition-colors hover:text-sky-300">
+            <h1 className="pt-10 text-4xl font-semibold leading-tight text-white transition-colors sm:text-5xl lg:text-6xl hover:text-sky-300">
               Renz Rendel <br /> De Arroz
             </h1>
           </Link>
@@ -157,7 +157,7 @@ export function Navbar() {
           className="mt-16 text-sm text-slate-500"
           variants={itemVariants}
         >
-          <p>Design Inspired by <strong>Brittany Chiang</strong></p>
+          <p>Design Inspired by <strong><a href="https://brittanychiang.com" target="_blank" rel="noreferrer" className="hover:text-sky-300">Brittany Chiang</a></strong></p>
         </motion.div>
       </motion.div>
     </nav>

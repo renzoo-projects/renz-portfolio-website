@@ -14,7 +14,7 @@ export function ProjectsClientShell() {
     <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <CursorFollower />
 
-      <main className="px-6 pb-20 pt-20 md:px-8">
+      <main className="px-10 pb-20 pt-20 lg:px-16">
         <div className="mx-auto max-w-3xl">
           <div className="mb-14">
             <Link href="/" className="group mb-6 flex items-center gap-3 text-sky-300/80 transition-transform hover:-translate-x-1">
@@ -32,7 +32,7 @@ export function ProjectsClientShell() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.04 }}
                 viewport={{ once: true }}
-                className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
+                className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
               >
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
@@ -82,7 +82,7 @@ export function ProjectsClientShell() {
                     alt={project.title}
                     width={200}
                     height={112}
-                    className="aspect-video rounded border-2 border-slate-200/10 object-cover transition group-hover:border-slate-200/30"
+                    className="aspect-video w-full rounded border-2 border-slate-200/10 object-cover transition group-hover:border-slate-200/30"
                   />
                 </div>
               </motion.li>
