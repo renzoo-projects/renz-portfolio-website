@@ -4,7 +4,7 @@ export const experiences = [
     title: "Technical Developer",
     organization: "Simcoe Employment",
     description:
-      "Built workflow-focused applications across the stack, with an emphasis on practical interfaces, data handling, and maintainable implementation.",
+      "Developed, maintained, and audited 6 WordPress websites, managed DNS record transfers between domains, and configured email DNS settings including MX, SPF, and related records.",
     techs: ["WordPress", "HTML", "JavaScript", "CSS"],
   },
 ] as const;
