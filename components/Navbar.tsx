@@ -72,9 +72,9 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center px-10 py-12 lg:sticky lg:top-0 lg:h-screen lg:px-16 lg:py-0">
+    <nav className="flex items-center px-10 py-12 lg:sticky lg:top-0 lg:h-screen lg:px-16 lg:py-0 lg:items-start lg:justify-center">
       <motion.div
-        className="w-full max-w-sm"
+        className="w-full lg:w-auto max-w-sm"
         variants={containerVariants}
         initial="hidden"
         animate="show"
@@ -83,7 +83,7 @@ export function Navbar() {
         {/* NAME */}
         <motion.div variants={itemVariants}>
           <Link href="/">
-            <h1 className="pt-10 text-4xl font-semibold leading-tight text-white transition-colors sm:text-5xl lg:text-6xl hover:text-sky-300">
+            <h1 className="pt-10 lg:pt-28 text-4xl font-semibold leading-tight text-white transition-colors sm:text-5xl lg:text-6xl hover:text-sky-300">
               Renz Rendel <br /> De Arroz
             </h1>
           </Link>

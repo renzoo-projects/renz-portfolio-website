@@ -50,7 +50,7 @@ export default function Home() {
       <div className="grid min-h-screen lg:grid-cols-2">
 
         {/* Left Content  */}
-        <aside className="lg:sticky lg:top-0 lg:h-screen lg:translate-x-[17.5rem] lg:-translate-y-[6.25rem]">
+        <aside className="lg:sticky lg:top-0 lg:h-screen">
           <Navbar />
         </aside>
 
