@@ -19,7 +19,7 @@ const structuredData = {
   "@type": "Person",
   name: site.name,
   url: site.url,
-  jobTitle: "Full-stack Developer",
+  jobTitle: "Software Engineer",
   description: site.description,
   knowsAbout: ["React", "Next.js", "Node.js", "Firebase", "SQL"],
   mainEntityOfPage: site.url,
