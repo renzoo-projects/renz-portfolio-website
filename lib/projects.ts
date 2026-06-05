@@ -11,6 +11,18 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Cogssy",
+    slug: "cogssy",
+    description:
+      "A COGS calculator for makers and small businesses. Define ingredients with unit conversion, add overheads, compose products, and get a target selling price from your desired margin.",
+    year: "2026",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    featured: true,
+    href: "https://cogssy.vercel.app/",
+    image:
+      "/images/Cogssy.png",
+  },
+  {
     title: "Laundry Management System",
     slug: "laundry-management-system",
     description:
@@ -53,7 +65,7 @@ export const projects: Project[] = [
       "A personal portfolio website built with Next.js, showcasing projects and experiences. Designed inspired by the aesthetics of Brittany Chiang's portfolio website.",
     year: "2024",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    featured: true,
+    featured: false,
     image:
       "/images/Personal-Portfolio-Website.png",
   },
