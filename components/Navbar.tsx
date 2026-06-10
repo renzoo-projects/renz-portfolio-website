@@ -152,13 +152,6 @@ export function Navbar() {
           </a>
         </motion.div>
 
-        {/* CREDITS */}
-        <motion.div
-          className="mt-16 text-sm text-slate-500"
-          variants={itemVariants}
-        >
-          <p>Design Inspired by <strong><a href="https://brittanychiang.com" target="_blank" rel="noreferrer" className="hover:text-sky-300">Brittany Chiang</a></strong></p>
-        </motion.div>
       </motion.div>
     </nav>
   );
