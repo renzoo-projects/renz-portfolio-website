@@ -36,7 +36,20 @@ export function ExperienceSection() {
               <h3 className="font-medium leading-snug text-slate-200">
                 {experience.title}
               </h3>
-              <p className="text-sm text-slate-400 italic">{experience.organization}</p>
+              {experience.href ? (
+                <a
+                  href={experience.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-sm italic text-slate-400 underline-offset-4 transition-colors hover:text-sky-300 hover:underline"
+                >
+                  {experience.organization}
+                </a>
+              ) : (
+                <p className="text-sm text-slate-400 italic">
+                  {experience.organization}
+                </p>
+              )}
               <p className="mt-2 text-sm leading-normal text-slate-400">
                 {experience.description}
               </p>

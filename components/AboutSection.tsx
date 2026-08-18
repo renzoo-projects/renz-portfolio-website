@@ -15,15 +15,15 @@ export function AboutSection() {
         >
           <p className="mb-4 text-sm tracking-[0.24em] text-sky-300/80">ABOUT</p>
           <p>
-            I&apos;m Renz Rendel De Arroz, currently a 3rd-year Computer Science student from the University of the Philippines Visayas, interested in building systems that are practical, reliable, and easy to use. I work across both frontend and backend development, using tools like React, Node.js, Firebase, and SQL to turn ideas into working applications.
+            I&apos;m Renz Rendel De Arroz, currently a 4th-year Computer Science student at the University of the Philippines Visayas. I build full-stack web and mobile applications that solve real problems.
           </p>
 
           <p>
-            I&apos;ve worked on web and mobile applications, where I focused on building systems and features that solve actual user needs while learning how to work within real development workflows and team environments.
+            I focus on systems that are practical, reliable, and easy to use — and I learn best by building.
           </p>
 
           <p>
-            Most of my learning comes from building. I enjoy understanding how systems work behind the scenes — from interfaces and databases to application logic and structure — and continuously improving how I approach development. My goal is to become a developer who creates products that are useful, scalable, and grounded in real problems.
+            Most of my learning comes from building — I enjoy understanding how systems work behind the scenes, from interfaces and databases to application logic. My goal is to create products that are useful, scalable, and grounded in real problems.
           </p>
         </motion.div>
       </div>
