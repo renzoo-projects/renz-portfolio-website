@@ -1,4 +1,13 @@
-export const experiences = [
+export type Experience = {
+  period: string;
+  title: string;
+  organization: string;
+  description: string;
+  techs: string[];
+  href?: string;
+};
+
+export const experiences: Experience[] = [
   {
     period: "2026",
     title: "Software Engineer Intern",
@@ -17,4 +26,4 @@ export const experiences = [
       "Developed, maintained, and audited 6 WordPress websites, managed DNS record transfers between domains, and configured email DNS settings including MX, SPF, and related records.",
     techs: ["WordPress", "HTML", "JavaScript", "CSS"],
   },
-] as const;
+];
