@@ -4,7 +4,7 @@ export const site = {
   name: "Renz Rendel De Arroz",
   title: "Renz Rendel De Arroz",
   description:
-    "Renz Rendel De Arroz is a Computer Science student who builds innovative full-stack systems and digital tools focused on solving real-world problems.",
+    "Renz Rendel De Arroz builds reliable, full-stack web and mobile applications that solve real problems.",
   url: siteUrl,
   socials: {
     github: "https://github.com/renzoupv",

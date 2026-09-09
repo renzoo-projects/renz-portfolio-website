@@ -15,7 +15,7 @@ export function AboutSection() {
         >
           <p className="mb-4 text-sm tracking-[0.24em] text-sky-300/80">ABOUT</p>
           <p>
-            I&apos;m Renz Rendel De Arroz, currently a 4th-year Computer Science student at the University of the Philippines Visayas. I build full-stack web and mobile applications that solve real problems.
+            I&apos;m Renz Rendel De Arroz. I build full-stack web and mobile applications that solve real problems.
           </p>
 
           <p>
