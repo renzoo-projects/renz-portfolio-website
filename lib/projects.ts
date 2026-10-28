@@ -69,7 +69,7 @@ export const projects: Project[] = [
       "/images/Pathfinding-Visualizer.png",
   },
   {
-    title: "renzdearroz.vercel.app",
+    title: "renzdearroz.com",
     slug: "personal-portfolio-website",
     description:
       "A personal portfolio website built with Next.js, showcasing projects and experiences. Designed inspired by the aesthetics of Brittany Chiang's portfolio website.",

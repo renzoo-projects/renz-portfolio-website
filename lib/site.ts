@@ -1,4 +1,4 @@
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://renzdearroz.vercel.app";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://renzdearroz.com";
 
 export const site = {
   name: "Renz Rendel De Arroz",
