@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: "Lucky 8 Coffee POS",
     slug: "lucky-8-coffee-pos",
     description:
-      "A point-of-sale system and owners' dashboard for a coffee shop. The till is a macOS desktop app that keeps selling offline and syncs to the cloud when it reconnects. The web dashboard shows sales reports and lets owners edit the menu.",
+      "A point-of-sale system and owners' dashboard for a coffee shop. The till is a desktop app that keeps selling offline and syncs to the cloud when it reconnects. The web dashboard shows sales reports and lets owners edit the menu.",
     year: "2026",
     tags: ["Tauri", "Next.js", "React", "TypeScript", "Supabase", "SQLite", "Docker", "Tailwind CSS"],
     featured: true,
