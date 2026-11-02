@@ -11,10 +11,10 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Lucky 8 Coffee POS",
+    title: "Point of Sale System",
     slug: "lucky-8-coffee-pos",
     description:
-      "A point-of-sale system and owners' dashboard built for a coffee shop. The till keeps taking orders even when the internet goes down, then syncs everything to the cloud once it reconnects. Owners get sales reports and full control of the menu from any browser.",
+      "A point-of-sale system and owners' dashboard built for a cafe. The till keeps taking orders even when the internet goes down, then syncs everything to the cloud once it reconnects. Owners get sales reports and full control of the menu from any browser.",
     year: "2026",
     tags: ["Tauri", "Next.js", "React", "TypeScript", "Supabase", "SQLite", "Docker", "Tailwind CSS"],
     featured: true,
