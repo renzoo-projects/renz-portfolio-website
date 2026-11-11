@@ -1,64 +1,45 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { Github, Linkedin, Facebook, Instagram, ExternalLink } from "lucide-react";
-import { motion } from "motion/react";
 import { site } from "@/lib/site";
 
 const navItems = [
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
 ];
+
+const socials = [
+  { label: "GitHub profile", href: site.socials.github, Icon: Github },
+  { label: "LinkedIn profile", href: site.socials.linkedin, Icon: Linkedin },
+  { label: "Facebook profile", href: site.socials.facebook, Icon: Facebook },
+  { label: "Instagram profile", href: site.socials.instagram, Icon: Instagram },
+];
+
+const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState("about");
 
-  const containerVariants = useMemo(() => ({
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.05,
-      },
-    },
-  }), []);
-
-  const itemVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: 12 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1] as const,
-      },
-    },
-  }), []);
-
   useEffect(() => {
     const handleScroll = () => {
       const marker = window.innerHeight * 0.35;
-      let nextSection = navItems[0]?.id ?? "about";
+      let nextSection = navItems[0].id;
 
       for (const item of navItems) {
         const el = document.getElementById(item.id);
-        if (!el) continue;
-
-        const rect = el.getBoundingClientRect();
-
-        if (rect.top <= marker && rect.bottom > marker) {
-          nextSection = item.id;
-          break;
-        }
-
-        if (rect.top < marker) {
-          nextSection = item.id;
-        }
+        if (el && el.getBoundingClientRect().top <= marker) nextSection = item.id;
       }
 
-      setActiveSection((current) => (current === nextSection ? current : nextSection));
+      // The last section is too short to reach the marker, so select it at the bottom of the page.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        nextSection = navItems[navItems.length - 1].id;
+      }
+
+      setActiveSection(nextSection);
     };
 
     handleScroll();
@@ -72,23 +53,17 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center px-10 py-12 lg:sticky lg:top-0 lg:h-screen lg:px-16 lg:py-0 lg:items-start lg:justify-center">
-      <motion.div
-        className="w-full lg:w-auto max-w-sm"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-      >
-
+    <header className="flex items-center px-6 pb-4 pt-16 sm:px-10 lg:sticky lg:top-0 lg:h-screen lg:items-start lg:justify-center lg:px-16 lg:py-0">
+      <div className="w-full max-w-sm lg:w-auto">
         {/* NAME */}
-        <motion.div variants={itemVariants}>
-          <Link href="/">
-            <h1 className="pt-10 lg:pt-28 text-4xl font-semibold leading-tight text-white transition-colors sm:text-5xl lg:text-6xl hover:text-sky-300">
+        <div className="fade-in">
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:pt-28 lg:text-6xl">
+            <Link href="/" className="transition-colors hover:text-sky-300">
               Renz Rendel <br /> De Arroz
-            </h1>
-          </Link>
+            </Link>
+          </h1>
 
-          <p className="mt-5 text-slate-300 leading-7 text-sm md:text-base">
+          <p className="mt-5 text-sm leading-7 text-slate-300 md:text-base">
             I build reliable systems and intuitive interfaces that solve real problems.
           </p>
 
@@ -96,63 +71,59 @@ export function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noreferrer noopener"
-            className="mt-5 inline-flex items-center gap-2 rounded-lg border border-sky-400/50 px-4 py-2 text-sm text-sky-300 transition-all hover:border-sky-400 hover:bg-sky-400/10"
+            className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-sky-400/50 px-4 py-2 text-sm text-sky-300 transition-colors hover:border-sky-400 hover:bg-sky-400/10"
           >
             View Resume
-            <ExternalLink size={14} />
+            <ExternalLink size={14} aria-hidden="true" />
+            <span className="sr-only">(opens in a new tab)</span>
           </a>
-        </motion.div>
+        </div>
 
         {/* NAV */}
-        <motion.div className="mt-14 space-y-4" variants={itemVariants}>
-          {navItems.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              onClick={() =>
-                document.getElementById(item.id)?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              aria-current={activeSection === item.id ? "page" : undefined}
-              className={`group flex items-center gap-3 text-sm uppercase tracking-[0.2em] transition-colors ${
-                activeSection === item.id
-                  ? "text-sky-300"
-                  : "text-slate-400"
-              }`}
-            >
-              <span
-                className={`h-px transition-all ${
-                  activeSection === item.id
-                    ? "w-10 bg-sky-300"
-                    : "w-6 bg-slate-700 group-hover:w-10 group-hover:bg-sky-300"
-                }`}
-              />
-              {item.label}
-            </button>
-          ))}
-        </motion.div>
+        <nav aria-label="Sections" className="fade-in mt-14 hidden lg:block" style={delay(100)}>
+          <ul className="space-y-1">
+            {navItems.map((item) => {
+              const active = activeSection === item.id;
+
+              return (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    aria-current={active ? "location" : undefined}
+                    className={`group flex items-center gap-3 py-1.5 text-sm uppercase tracking-[0.2em] transition-colors hover:text-sky-300 ${
+                      active ? "text-sky-300" : "text-slate-400"
+                    }`}
+                  >
+                    <span
+                      className={`h-px transition-all group-hover:w-10 group-hover:bg-sky-300 ${
+                        active ? "w-10 bg-sky-300" : "w-6 bg-slate-700"
+                      }`}
+                    />
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
 
         {/* SOCIALS */}
-        <motion.div
-          className="mt-16 flex gap-4 text-slate-400"
-          variants={itemVariants}
-        >
-          <a href={site.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub profile" className="transition-colors hover:text-white">
-            <Github size={18} />
-          </a>
-          <a href={site.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn profile" className="transition-colors hover:text-white">
-            <Linkedin size={18} />
-          </a>
-          <a href={site.socials.facebook} target="_blank" rel="noreferrer" aria-label="Facebook profile" className="transition-colors hover:text-white">
-            <Facebook size={18} />
-          </a>
-          <a href={site.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram profile" className="transition-colors hover:text-white">
-            <Instagram size={18} />
-          </a>
-        </motion.div>
-
-      </motion.div>
-    </nav>
+        <ul className="fade-in -ml-3 mt-8 flex text-slate-400 lg:mt-12" style={delay(200)}>
+          {socials.map(({ label, href, Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label={label}
+                className="flex size-11 items-center justify-center transition-colors hover:text-white"
+              >
+                <Icon size={18} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
   );
 }

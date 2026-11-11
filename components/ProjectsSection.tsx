@@ -1,34 +1,18 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { motion } from "motion/react";
 import { featuredProjects } from "@/lib/projects";
 
 export function ProjectsSection() {
   return (
     <section id="projects" className="py-8 lg:py-16">
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="mb-8 max-w-3xl"
-      >
-        <p className="mb-4 text-sm tracking-[0.24em] text-sky-300/80">PROJECTS</p>
-      </motion.div>
+      <div className="reveal mb-8 max-w-3xl">
+        <h2 className="mb-4 text-sm font-normal tracking-[0.24em] text-sky-300/80">PROJECTS</h2>
+      </div>
 
       <ul className="group/list flex max-w-3xl flex-col gap-12">
-        {featuredProjects.map((project, index) => (
-          <motion.li
-            key={project.slug}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.06 }}
-            viewport={{ once: true }}
-            className="group relative"
-          >
+        {featuredProjects.map((project) => (
+          <li key={project.slug} className="reveal group relative">
             <div className="grid gap-4 pb-1 transition-opacity sm:grid-cols-8 sm:gap-8 lg:group-hover:!opacity-100 lg:group-hover/list:opacity-50">
               <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
@@ -72,14 +56,14 @@ export function ProjectsSection() {
               <div className="sm:order-1 sm:col-span-2 sm:translate-y-1">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} screenshot`}
                   placeholder="blur"
                   sizes="(min-width: 640px) 12rem, 100vw"
                   className="aspect-video w-full rounded border-2 border-slate-200/10 object-cover transition-colors group-hover:border-slate-200/30"
                 />
               </div>
             </div>
-          </motion.li>
+          </li>
         ))}
       </ul>
 

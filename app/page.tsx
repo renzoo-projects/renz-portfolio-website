@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { AboutSection } from "@/components/AboutSection";
+import { ContactSection } from "@/components/ContactSection";
 import { CursorFollower } from "@/components/CursorFollower";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -37,8 +37,7 @@ export default function Home() {
   return (
     <div className="relative isolate min-h-screen bg-black text-white">
       {/* SEO */}
-      <Script
-        id="structured-data"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData),
@@ -50,15 +49,16 @@ export default function Home() {
       <div className="grid min-h-screen lg:grid-cols-2">
 
         {/* Left Content  */}
-        <aside className="lg:sticky lg:top-0 lg:h-screen">
+        <div className="lg:sticky lg:top-0 lg:h-screen">
           <Navbar />
-        </aside>
+        </div>
 
         {/* Right Content  */}
-        <main id="content" className="max-w-3xl px-10 lg:px-16">
+        <main id="content" className="max-w-3xl px-6 sm:px-10 lg:px-16">
           <AboutSection />
           <ExperienceSection />
           <ProjectsSection />
+          <ContactSection />
         </main>
       </div>
     </div>

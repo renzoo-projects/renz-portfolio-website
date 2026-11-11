@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
+  async redirects() {
+    return [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
+        source: "/:path*",
+        has: [{ type: "host", value: "www.renzdearroz.com" }],
+        destination: "https://renzdearroz.com/:path*",
+        permanent: true,
       },
-    ],
+    ];
   },
 };
 
