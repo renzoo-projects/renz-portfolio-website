@@ -9,7 +9,6 @@ const navItems = [
   { label: "About", id: "about" },
   { label: "Experience", id: "experience" },
   { label: "Projects", id: "projects" },
-  { label: "Contact", id: "contact" },
 ];
 
 const socials = [
@@ -32,11 +31,6 @@ export function Navbar() {
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el && el.getBoundingClientRect().top <= marker) nextSection = item.id;
-      }
-
-      // The last section is too short to reach the marker, so select it at the bottom of the page.
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
-        nextSection = navItems[navItems.length - 1].id;
       }
 
       setActiveSection(nextSection);

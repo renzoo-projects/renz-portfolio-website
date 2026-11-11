@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { AboutSection } from "@/components/AboutSection";
-import { ContactSection } from "@/components/ContactSection";
 import { CursorFollower } from "@/components/CursorFollower";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -58,7 +57,6 @@ export default function Home() {
           <AboutSection />
           <ExperienceSection />
           <ProjectsSection />
-          <ContactSection />
         </main>
       </div>
     </div>
