@@ -1,3 +1,11 @@
+import type { StaticImageData } from "next/image";
+import lucky8Image from "@/public/images/Lucky8-Coffee-POS.webp";
+import cogssyImage from "@/public/images/Cogssy.webp";
+import laundryImage from "@/public/images/Laundry-Management-System.webp";
+import pondStatImage from "@/public/images/PondStat.webp";
+import pathfindingImage from "@/public/images/Pathfinding-Visualizer.webp";
+import portfolioImage from "@/public/images/Personal-Portfolio-Website.webp";
+
 export type Project = {
   title: string;
   slug: string;
@@ -5,7 +13,7 @@ export type Project = {
   year: string;
   tags: string[];
   featured?: boolean;
-  image: string;
+  image: StaticImageData;
   href?: string;
 };
 
@@ -18,7 +26,7 @@ export const projects: Project[] = [
     year: "2026",
     tags: ["Tauri", "Next.js", "React", "TypeScript", "Supabase", "SQLite", "Docker", "Tailwind CSS"],
     featured: true,
-    image: "/images/Lucky8-Coffee-POS.webp",
+    image: lucky8Image,
   },
   {
     title: "Cogssy",
@@ -29,8 +37,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     featured: true,
     href: "https://cogssy.vercel.app/",
-    image:
-      "/images/Cogssy.png",
+    image: cogssyImage,
   },
   {
     title: "Laundry Management System",
@@ -41,8 +48,7 @@ export const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     featured: true,
     href: "https://github.com/renzoupv/Laundry-Management-System",
-    image:
-      "/images/Laundry-Management-System.png",
+    image: laundryImage,
   },
   {
     title: "PondStat",
@@ -53,8 +59,7 @@ export const projects: Project[] = [
     tags: ["Flutter", "Dart", "Firebase"],
     featured: true,
     href: "https://github.com/PondStat/PondStat-Mobile-App",  
-    image:
-      "/images/PondStat.png",
+    image: pondStatImage,
   },
   {
     title: "Pathfinding Visualizer",
@@ -65,8 +70,7 @@ export const projects: Project[] = [
     tags: ["WASM", "C", "HTML", "CSS", "JavaScript"],
     featured: true,
     href: "https://github.com/renzoupv/Pathfinding-Visualizer",
-    image:
-      "/images/Pathfinding-Visualizer.png",
+    image: pathfindingImage,
   },
   {
     title: "renzdearroz.com",
@@ -76,8 +80,7 @@ export const projects: Project[] = [
     year: "2024",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     featured: false,
-    image:
-      "/images/Personal-Portfolio-Website.png",
+    image: portfolioImage,
   },
 ];
 
