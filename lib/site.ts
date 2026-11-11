@@ -15,7 +15,6 @@ export const site = {
   keywords: [
     "Renz Rendel De Arroz",
     "full-stack developer",
-    "Computer Science student",
     "React developer",
     "Next.js developer",
     "Node.js developer",

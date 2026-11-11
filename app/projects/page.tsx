@@ -4,7 +4,7 @@ import { ProjectsClientShell } from "@/components/ProjectsClientShell";
 
 const title = "Projects";
 const description =
-  "Selected full-stack and application development projects by Renz Rendel De Arroz, including Laundry Management System, PondStat, and portfolio work.";
+  "Selected full-stack and application development projects by Renz Rendel De Arroz, including a cafe point-of-sale system, Cogssy, and PondStat.";
 
 export const metadata: Metadata = {
   title,

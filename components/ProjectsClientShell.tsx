@@ -1,9 +1,6 @@
-"use client";
-
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "motion/react";
 import { projects } from "@/lib/projects";
 import { CursorFollower } from "./CursorFollower";
 
@@ -14,11 +11,11 @@ export function ProjectsClientShell() {
     <div className="relative isolate min-h-screen overflow-x-hidden bg-black text-white">
       <CursorFollower />
 
-      <main className="px-10 pb-20 pt-20 lg:px-16">
+      <main className="px-6 pb-20 pt-16 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-3xl">
           <div className="mb-14">
-            <Link href="/" className="group mb-6 flex items-center gap-3 text-sky-300/80 transition-transform hover:-translate-x-1">
-              <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
+            <Link href="/" className="group mb-6 inline-flex min-h-11 items-center gap-3 text-sky-300/80 transition-colors hover:text-sky-300">
+              <ArrowLeft size={20} aria-hidden="true" className="transition-transform group-hover:-translate-x-1 motion-reduce:transition-none" />
               <span className="text-sm tracking-[0.24em]">BACK TO PORTFOLIO</span>
             </Link>
             <h1 className="mb-6 text-4xl font-semibold tracking-normal text-white md:text-6xl">Full Archive</h1>
@@ -26,14 +23,7 @@ export function ProjectsClientShell() {
 
           <ul className="group/list flex flex-col gap-12">
             {sortedProjects.map((project, index) => (
-              <motion.li
-                key={project.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.04 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
+              <li key={project.slug} id={project.slug} className="reveal group relative scroll-mt-10">
                 <div className="grid gap-4 pb-1 transition-opacity sm:grid-cols-8 sm:gap-8 lg:group-hover:!opacity-100 lg:group-hover/list:opacity-50">
                   <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
@@ -75,12 +65,12 @@ export function ProjectsClientShell() {
                   </div>
 
                   <div className="sm:order-1 sm:col-span-2 sm:translate-y-1">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
                       {project.year}
                     </p>
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} screenshot`}
                       placeholder="blur"
                       sizes="(min-width: 640px) 12rem, 100vw"
                       priority={index < 2}
@@ -88,7 +78,7 @@ export function ProjectsClientShell() {
                     />
                   </div>
                 </div>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
