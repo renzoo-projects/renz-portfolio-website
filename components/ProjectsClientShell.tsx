@@ -11,7 +11,7 @@ const sortedProjects = [...projects].sort((a, b) => Number(b.year) - Number(a.ye
 
 export function ProjectsClientShell() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-black text-white">
+    <div className="relative isolate min-h-screen overflow-x-hidden bg-black text-white">
       <CursorFollower />
 
       <main className="px-10 pb-20 pt-20 lg:px-16">
@@ -32,58 +32,61 @@ export function ProjectsClientShell() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.04 }}
                 viewport={{ once: true }}
-                className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50"
+                className="group relative"
               >
-                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+                <div className="grid gap-4 pb-1 transition-opacity sm:grid-cols-8 sm:gap-8 lg:group-hover:!opacity-100 lg:group-hover/list:opacity-50">
+                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
 
-                <div className="z-10 sm:order-2 sm:col-span-6 sm:mt-5">
-                  <h3>
-                    {project.href ? (
-                      <Link
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="inline-flex items-baseline font-medium leading-tight text-slate-200 group/link text-base"
-                      >
-                        <span className="absolute -inset-x-4 -inset-y-2.5 rounded md:-inset-x-6 md:-inset-y-4" />
-                        <span>{project.title}</span>
-                        <ExternalLink
-                          size={14}
-                          className="inline-block shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none ml-1"
-                        />
-                      </Link>
-                    ) : (
-                      <span className="font-medium leading-tight text-slate-200">
-                        {project.title}
-                      </span>
-                    )}
-                  </h3>
-                  <p className="mt-2 text-sm leading-normal text-slate-400">
-                    {project.description}
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-sky-400/10 px-2 py-0.5 text-xs text-sky-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="z-10 sm:order-2 sm:col-span-6 sm:mt-5">
+                    <h3>
+                      {project.href ? (
+                        <Link
+                          href={project.href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="inline-flex items-baseline font-medium leading-tight text-slate-200 group/link text-base"
+                        >
+                          <span className="absolute -inset-x-4 -inset-y-2.5 rounded md:-inset-x-6 md:-inset-y-4" />
+                          <span>{project.title}</span>
+                          <ExternalLink
+                            size={14}
+                            className="inline-block shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 motion-reduce:transition-none ml-1"
+                          />
+                        </Link>
+                      ) : (
+                        <span className="font-medium leading-tight text-slate-200">
+                          {project.title}
+                        </span>
+                      )}
+                    </h3>
+                    <p className="mt-2 text-sm leading-normal text-slate-400">
+                      {project.description}
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-sky-400/10 px-2 py-0.5 text-xs text-sky-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="sm:order-1 sm:col-span-2 sm:translate-y-1">
-                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                    {project.year}
-                  </p>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={200}
-                    height={112}
-                    className="aspect-video w-full rounded border-2 border-slate-200/10 object-cover transition group-hover:border-slate-200/30"
-                  />
+                  <div className="sm:order-1 sm:col-span-2 sm:translate-y-1">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      {project.year}
+                    </p>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      placeholder="blur"
+                      sizes="(min-width: 640px) 12rem, 100vw"
+                      priority={index < 2}
+                      className="aspect-video w-full rounded border-2 border-slate-200/10 object-cover transition-colors group-hover:border-slate-200/30"
+                    />
+                  </div>
                 </div>
               </motion.li>
             ))}
