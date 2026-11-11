@@ -10,11 +10,11 @@ export function AboutSection() {
           </p>
 
           <p>
-            I focus on systems that are practical, reliable, and easy to use — and I learn best by building.
+            I focus on systems that are practical, reliable, and easy to use.
           </p>
 
           <p>
-            Most of my learning comes from building — I enjoy understanding how systems work behind the scenes, from interfaces and databases to application logic. My goal is to create products that are useful, scalable, and grounded in real problems.
+            I learn best by building. I enjoy understanding how systems work behind the scenes, from interfaces and databases to application logic. My goal is to create products that are useful, scalable, and built for the people who use them.
           </p>
         </div>
       </div>
